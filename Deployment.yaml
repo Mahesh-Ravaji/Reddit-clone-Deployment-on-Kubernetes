@@ -1,0 +1,46 @@
+# apiVersion : app/v1
+# kind : deployment 
+# metadata : 
+#   name : reddit-clone-deployment 
+#   label : 
+#     app : reddit-clone 
+
+# spec : 
+#   replicas : 2 
+#   selector : 
+#     matchLabels : 
+#       app : reddit-clone 
+#   template :
+#     matadata : 
+#       labels : 
+#         app : reddit-clone 
+
+#     spec : 
+#       containers : 
+#       - name : reddit-clone 
+#         image : rohanrustagi18/redditclone
+#         ports : 
+#         - containers : 3000
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reddit-clone-deployment   # Deployment name
+  labels:
+    app: reddit-clone            # Label for identifying this deployment
+
+spec:
+  replicas: 0                     # Number of replicas (pods) to maintain
+  selector:
+    matchLabels:
+      app: reddit-clone          # Label selector to match pods controlled by this deployment
+  template:
+    metadata:
+      labels:
+        app: reddit-clone      # Labels to apply to the pods created by this template
+    spec:
+      containers:
+      - name: reddit-clone         # Name of the container
+        image: rohanrustagi18/redditclone   # Docker image for the container
+        ports:
+        - containerPort: 3000      # Port the container listens on
